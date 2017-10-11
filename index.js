@@ -27698,6 +27698,25 @@ var mapData = {
   ]
 };
 
+if (FileReader.prototype.readAsBinaryString === undefined) {
+    FileReader.prototype.readAsBinaryString = function (fileData) {
+        var binary = "";
+        var pt = this;
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var bytes = new Uint8Array(reader.result);
+            var length = bytes.byteLength;
+            for (var i = 0; i < length; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            //pt.result  - readonly so assign content to another property
+            pt.content = binary;
+            pt.onload(); // thanks to @Denis comment
+        }
+        reader.readAsArrayBuffer(fileData);
+    }
+}
+
 var colorSet = { Samsung: "blue", Mitsubishi: "red" };
 
 function handleFiles(files) {
@@ -27722,7 +27741,12 @@ function getAsText(fileToRead) {
 }
 
 function loadHandler(event) {
-  var data = event.target.result;
+  if(!event){
+      var data = reader.content;
+  } else {
+      var data = event.target.result;
+  }
+  
   var workbook = XLSX.read(data, {
     type: "binary"
   });
