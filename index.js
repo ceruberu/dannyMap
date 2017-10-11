@@ -27754,7 +27754,8 @@ function makeCircles(json) {
   var companyForm = document.createElement("form");
   listOfCompanies.forEach(function(company) {
     var companyLabel = document.createElement("label");
-    companyLabel.innerHTML = ` ${company} `;
+    // companyLabel.innerHTML = ` ${company} `;
+    companyLabel.innerHTML = ' ' + company + ' ';
     var companyInput = document.createElement("input");
     companyInput.setAttribute("class", "jscolor");
     companyInput.setAttribute("value", "ab2567");
@@ -27800,9 +27801,9 @@ function makeCircles(json) {
 }
 
 function changeColor(event) {
-  var companyName = event.target.name;
-  var companyColor = event.target.value;
-  d3.selectAll(`.${companyName}`).attr("fill", `#${companyColor}`);
+  var companyName = '.' + event.target.name;
+  var companyColor = '#' + event.target.value;
+  d3.selectAll(companyName).attr("fill", companyColor);
 }
 var width = 1200, height = 600, centered;
 
