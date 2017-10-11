@@ -27742,11 +27742,11 @@ function getAsText(fileToRead) {
 
 function loadHandler(event) {
   if(!event){
-      var data = reader.content;
+      var data = this.content;
   } else {
       var data = event.target.result;
   }
-  
+
   var workbook = XLSX.read(data, {
     type: "binary"
   });
