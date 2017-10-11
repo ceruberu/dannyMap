@@ -1,0 +1,21 @@
+#mapComponent {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    height: 100vh;
+}
+
+.svgCanvas {
+    display: flex;
+    flex: 1;
+}
+
+.background {
+    fill: none;
+}
+
+#csvFileInput {
+    display: flex;
+    flex: 0 0 30px;
+}
+
