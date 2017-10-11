@@ -27788,8 +27788,8 @@ function makeCircles(json) {
     .data(dataArray)
     .enter()
     .append("circle")
-    .attr("class", d => d.Company)
-    .attr("r", d => circleScale(Number(d.Value)))
+    .attr("class", function(d){return d.Company})
+    .attr("r", function(d){return circleScale(Number(d.Value))})
     .attr("fill", "black")
     .attr("transform", function(d) {
       return (
