@@ -27785,8 +27785,8 @@ function makeCircles(json) {
     companyInput.setAttribute("value", "ab2567");
     companyInput.setAttribute("name", company);
     companyInput.addEventListener("change", changeColor);
-    companyForm.append(companyLabel);
-    companyForm.append(companyInput);
+    companyForm.appendChild(companyLabel);
+    companyForm.appendChild(companyInput);
   });
 
   document.getElementById("mapComponent").appendChild(companyForm);
@@ -27888,7 +27888,7 @@ mapLayer
   .append("path")
   .attr("d", path)
   .attr("vector-effect", "non-scaling-stroke")
-  .style("fill", color(5));
+  .style("fill", '#6de1ff');
 // .on('mouseover', mouseover)
 // .on('mouseout', mouseout)
 // .on('click', clicked);
